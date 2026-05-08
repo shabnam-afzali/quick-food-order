@@ -53,7 +53,7 @@ function Checkout() {
       <Button type="button" onClick={handleClose} textOnly>
         بستن{" "}
       </Button>
-      <Button>Submit Order</Button>
+      <Button>ثبت سفارش</Button>
     </>
   );
   if (isSending) {
@@ -62,13 +62,15 @@ function Checkout() {
   if (data && !error) {
     return (
       <Modal open={userProgressCtx.progress === "checkout"}>
-        <h2>Success</h2>
-        <p>Your order was submitted successfully!</p>
+        <h2>موفقیت‌آمیز</h2>
+        <p>سفارش شما با موفقیت ثبت شد!</p>
         <p>
-          we Will get back to you with more details via email within few minutes
+          طی چند دقیقه آینده جزئیات بیشتر را از طریق ایمیل برایتان ارسال خواهیم
+          کرد.
         </p>
+
         <p className="modal-actions">
-          <Button onClick={handleFinish}>Okay</Button>
+          <Button onClick={handleFinish}>بستن</Button>
         </p>
       </Modal>
     );
@@ -76,14 +78,13 @@ function Checkout() {
   return (
     <Modal open={userProgressCtx.progress === "checkout"} onClose={handleClose}>
       <form onSubmit={handleSubmit}>
-        <h2>Checkout</h2>
-        <p>total Amount : {currencyFormatter.format(cartToltal)}</p>
-        <Input label="Full Name" type="text" id="name" />
-        <Input label="E-Mail Address" type="email" id="email" />
-        <Input label="Street" type="text" id="Street" />
+        <p>مبلغ کل : {currencyFormatter.format(cartToltal)} تومان</p>
+        <Input label="نام" type="text" id="name" />
+        <Input label="ایمیل" type="email" id="email" />
+        <Input label="خیابان" type="text" id="Street" />
         <div className="control-row">
-          <Input label="Postal Code" type="text" id="postal-code" />{" "}
-          <Input label="City" type="text" id="city" />
+          <Input label="کد پستی" type="text" id="postal-code" />{" "}
+          <Input label="شهر" type="text" id="city" />
         </div>
         <p className="modal-actions">{actions}</p>
       </form>
